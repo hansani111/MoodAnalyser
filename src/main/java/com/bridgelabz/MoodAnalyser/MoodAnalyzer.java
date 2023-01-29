@@ -20,21 +20,29 @@ public class MoodAnalyzer {
 		try {
 			if (message.toLowerCase().contains("sad"))
 				message = "SAD";
+			else if (message.toLowerCase().contains("happy"))
+				message = "HAPPY";
 			else
 				message = "HAPPY";
+
 			return message;
 		} catch (NullPointerException e) {
-			return "Exception Handled";
+			return "HAPPY";
 		}
 	}
 
 	public static void main(String[] args) {
 		MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
+		System.out.println(moodAnalyzer.analyzeMood());
+
 		moodAnalyzer.message = "I'm in Sad mood!!!";
-		System.out.println("Mood is " + moodAnalyzer.analyzeMood());
+		System.out.println(moodAnalyzer.analyzeMood());
 
 		moodAnalyzer.message = "I'm happy!!!";
-		System.out.println("Mood is " + moodAnalyzer.analyzeMood());
+		System.out.println(moodAnalyzer.analyzeMood());
+
+		moodAnalyzer.message = "";
+		System.out.println(moodAnalyzer.analyzeMood());
 	}
 }
