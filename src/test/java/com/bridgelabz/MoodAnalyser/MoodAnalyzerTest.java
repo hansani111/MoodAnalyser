@@ -20,9 +20,9 @@ public class MoodAnalyzerTest {
 	}
 	
 	@Test
-    public void givenMessage_WhenNull_ShouldReturnHappy() {
-        MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in sad mood");
-        String actualOutput = moodAnalyzer.message;
-        Assert.assertEquals("SAD",actualOutput);
+    	public void givenMessage_WhenNull_ShouldReturnHappy() {
+		MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in sad mood");
+		String actualOutput = moodAnalyzer.message;
+		Assert.assertEquals("SAD",actualOutput);
     }
 }
