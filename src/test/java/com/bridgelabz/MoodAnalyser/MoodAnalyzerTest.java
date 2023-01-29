@@ -5,37 +5,21 @@ import org.junit.Test;
 
 public class MoodAnalyzerTest {
 
+	/* Test case to check sad mood */
 	@Test
 	public void givenMessageWhenSadShouldReturnSad() {
-		MoodAnalyzer moodanalyzer = new MoodAnalyzer();
-
-		moodanalyzer.message = "I am in sad mood";
+		// create object of MoodAnalyzer class
+		MoodAnalyzer moodanalyzer = new MoodAnalyzer("I am in Sad Mood");
 		String actualOutput = moodanalyzer.analyzeMood();
 		Assert.assertEquals("SAD", actualOutput);
 	}
 
+	/* Test case to check happy mood */
 	@Test
-	public void givenMessageContainAnyMoodShouldReturnHAppy() {
-		MoodAnalyzer moodanalyzer = new MoodAnalyzer();
-
-		moodanalyzer.message = "I am in Any Mood";
+	public void givenMessageWhenHappyShouldReturnHappy() {
+		// create object of MoodAnalyzer
+		MoodAnalyzer moodanalyzer = new MoodAnalyzer("I am in Happy Mood");
 		String actualOutput = moodanalyzer.analyzeMood();
-		Assert.assertEquals("HAPPY", actualOutput);
-	}
-
-	@Test
-	public void givenMessage_WhenNull_ShouldReturnSAD() {
-		MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in sad mood");
-
-		String actualOutput = moodAnalyzer.analyzeMood();
-		Assert.assertEquals("SAD", actualOutput);
-	}
-
-	@Test
-	public void givenMessage_WhenNull_ShouldReturnHappy() {
-		MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in Any Mood");
-
-		String actualOutput = moodAnalyzer.analyzeMood();
 		Assert.assertEquals("HAPPY", actualOutput);
 	}
 }
