@@ -1,5 +1,7 @@
 package com.bridgelabz.MoodAnalyser;
 
+import com.bridgelabz.MoodAnalyser.MoodAnalyzerException.Message;
+
 public class MoodAnalyzer {
 	String message;
 
@@ -12,37 +14,49 @@ public class MoodAnalyzer {
 	public MoodAnalyzer() {
 	}
 
-	/*
-	 * this method will return Mood(HAPPY/SAD) according to the string given to
-	 * message
-	 */
-	public String analyzeMood() {
+	/* this method will return Mood(HAPPY/SAD) according to the message given */
+	public String analyzeMood() throws MoodAnalyzerException {
 		try {
 			if (message.toLowerCase().contains("sad"))
 				message = "SAD";
 			else if (message.toLowerCase().contains("happy"))
 				message = "HAPPY";
 			else
-				message = "HAPPY";
-
+				throw new MoodAnalyzerException(Message.EMPTY);
 			return message;
 		} catch (NullPointerException e) {
-			return "HAPPY";
+			throw new MoodAnalyzerException(Message.NULL);
 		}
 	}
 
 	public static void main(String[] args) {
 		MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
 
-		System.out.println(moodAnalyzer.analyzeMood());
+		try {
+			System.out.println(moodAnalyzer.analyzeMood());
+		} catch (MoodAnalyzerException e) {
+			System.out.println("Invalid Mood Entered!!!");
+		}
 
-		moodAnalyzer.message = "I'm in Sad mood!!!";
-		System.out.println(moodAnalyzer.analyzeMood());
+		try {
+			moodAnalyzer.message = "I'm in Sad mood!!!";
+			System.out.println(moodAnalyzer.analyzeMood());
+		} catch (MoodAnalyzerException e) {
+			System.out.println("Invalid Mood Entered!!!");
+		}
 
-		moodAnalyzer.message = "I'm happy!!!";
-		System.out.println(moodAnalyzer.analyzeMood());
+		try {
+			moodAnalyzer.message = "I'm happy!!!";
+			System.out.println(moodAnalyzer.analyzeMood());
+		} catch (MoodAnalyzerException e) {
+			System.out.println("Invalid Mood Entered!!!");
+		}
 
-		moodAnalyzer.message = "";
-		System.out.println(moodAnalyzer.analyzeMood());
+		try {
+			moodAnalyzer.message = "";
+			System.out.println(moodAnalyzer.analyzeMood());
+		} catch (MoodAnalyzerException e) {
+			System.out.println("Invalid Mood Entered!!!");
+		}
 	}
 }
